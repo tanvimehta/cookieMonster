@@ -110,6 +110,8 @@ public class SessionServlet extends HttpServlet {
 		// No button pressed = Reload Page
 		if (request.getParameter(REPLACE) == null && request.getParameter(REFRESH) == null 
 				&& request.getParameter(LOGOUT) == null) {
+			currSession.updateTimeStamp();
+			currentCookie.setMaxAge(120);
 			String page = getPage(currSession.getSessionId(), 
 					currSession.getVersion(),
 					currSession.getMessage(),
